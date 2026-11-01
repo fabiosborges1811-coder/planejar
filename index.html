@@ -114,7 +114,7 @@ const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',
 const uid=()=>Math.random().toString(36).slice(2,9),fmt=(s,o)=>dt(s).toLocaleDateString('pt-BR',o);
 let S={items:[],weeks:{}},fresh=true;
 try{const r=localStorage.getItem(KEY);if(r){S=JSON.parse(r);fresh=false}}catch(e){}
-const SB_URL='https://pyjbddchdpzbtkmefkgx.supabase.co',SB_KEY='';let sb=null,usr=null,pt,jd=null,dg=null;
+const SB_URL='https://pyjbddchdpzbtkmefkgx.supabase.co',SB_KEY='sb_publishable_t1vxt7Xs3B3yM1leUdOV_A_LrLWG_ih';let sb=null,usr=null,pt,jd=null,dg=null;
 const setSync=t=>{const e=$('#sync');e.textContent=t;e.hidden=false};
 function push(){if(!sb||!usr)return;clearTimeout(pt);setSync('Salvando');pt=setTimeout(async()=>{const r=await sb.from('planner_state').upsert({user_id:usr,data:S,updated_at:new Date().toISOString()});setSync(r.error?'Erro ao sincronizar':'Sincronizado')},800)}
 const save=()=>{S.at=Date.now();try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}push()};
